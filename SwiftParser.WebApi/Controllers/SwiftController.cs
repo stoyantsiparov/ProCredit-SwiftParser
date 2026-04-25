@@ -69,12 +69,12 @@ public class SwiftController : ControllerBase
         }
         catch (ArgumentException ex)
         {
-            _logger.LogError(ex, "Validation error during SWIFT parsing.");
+            _logger.LogError(ex, ErrorMessages.ParsingError);
             return BadRequest(ex.Message);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Unexpected error during file processing.");
+            _logger.LogError(ex, ErrorMessages.ProcessingError);
             return StatusCode(500, ErrorMessages.InternalServerError);
         }
     }
