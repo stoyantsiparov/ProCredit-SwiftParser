@@ -1,3 +1,5 @@
+using SwiftParser.WebApi.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,6 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+// Register the SwiftParserService for dependency injection
+builder.Services.AddScoped<ISwiftParserService, SwiftParserService>();
 
 var app = builder.Build();
 
