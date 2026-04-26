@@ -1,39 +1,44 @@
 # ProCredit Swift MT103 Parser - .NET Web API
 
-This project is a .NET 10 Web API developed as a technical assessment for the .NET Developer Intern position at ProCredit Bank. It is designed to receive `.txt` files containing SWIFT MT103 messages, parse their contents using a custom-built parser, and securely store the structured data into a SQLite database.
+This project is a high-performance **.NET 10 Web API** developed as a technical assessment for the .NET Developer Intern position at **ProCredit Bank**. The system is engineered to ingest `.txt` files containing SWIFT MT103 financial messages, parse them via a custom regex-based engine, and persist the data into a secure SQLite database using raw SQL.
 
-## Features
+## 🚀 Key Features
 
-### SWIFT Message Parsing
-* 📄 **Custom Parser:** Built entirely from scratch using Regular Expressions (Regex) to extract specific blocks and tags (e.g., `:20:`, `:32A:`, `:50K:`, `:59:`) without relying on any third-party SWIFT libraries.
-* 💱 **Data Formatting:** Automatically converts parsed string values into appropriate data types (e.g., formatting transaction amounts into `decimal` for accurate processing).
+### 🔍 Precision SWIFT Parsing
+* **Custom Regex Engine:** Built from the ground up using `System.Text.RegularExpressions` to isolate and extract critical SWIFT tags (e.g., `:20:`, `:23B:`, `:32A:`, `:50K:`, `:59:`, `:70:`) without external dependencies.
+* **Smart Data Normalization:** Automatically converts and formats complex SWIFT string values into precise C# data types (e.g., parsing comma-separated amounts into `decimal`).
 
-### Database Management
-* 🗄️ **SQLite Integration:** Lightweight, file-based database approach (`bank_data.db`).
-* 🛡️ **Raw SQL (No ORM):** Communicates with the database using raw ADO.NET (`SqliteCommand`) and parameterized SQL queries, strictly avoiding Entity Framework as per the requirements while ensuring protection against SQL Injection.
-* 🚀 **Auto-Initialization:** The database and required tables are automatically generated upon application startup if they do not already exist.
+### 🗄️ Secure Data Management
+* **Raw ADO.NET Integration:** Communicates with the **SQLite** backend using strictly parameterized queries and `SqliteCommand`. This approach follows bank requirements to avoid ORMs (like Entity Framework) and ensures maximum protection against SQL Injection.
+* **Zero-Config Setup:** Features an automated database initializer that creates the schema and tables on startup if they are missing.
 
-### Architecture & Infrastructure
-* 🏗️ **Clean Code Architecture:** Follows SOLID principles with a clear separation of concerns (Controllers, Services, Repositories).
-* 📝 **Advanced Logging:** Integrates **NLog** to automatically generate daily text log files (stored in the `logs` folder), capturing process execution steps and potential errors.
-* 📖 **Interactive Documentation:** Fully configured **Swagger UI** that opens automatically upon launch, allowing easy testing of the file upload endpoint.
-* 🚫 **No Auth:** Authentication and Authorization middleware have been explicitly removed as requested.
+### 🏗️ Enterprise-Grade Architecture
+* **Clean Architecture:** Implements a strict separation of concerns through the **Repository Pattern** and **Service Layer**, ensuring the code is maintainable and testable.
+* **Resilient Logging:** Integrated **NLog** infrastructure that generates structured daily log files for audit trails and error debugging.
+* **Live API Documentation:** Equipped with **Swagger UI** for real-time endpoint testing and visual API exploration.
 
-## Technologies
+## 🛠 Technologies & Tools
 
-#### Backend
-* 🌐 **.NET 10 & ASP.NET Core** for the Web API framework.
-* 🧩 **System.Text.RegularExpressions** for complex string parsing.
+| Category | Technology |
+| :--- | :--- |
+| **Framework** | .NET 10 (ASP.NET Core Web API) |
+| **Parsing** | Regular Expressions (Regex) |
+| **Database** | SQLite via `Microsoft.Data.Sqlite` (Raw SQL) |
+| **Logging** | NLog (File-based targets) |
+| **Docs** | Swashbuckle / Swagger UI |
 
-#### Database
-* 💾 **SQLite** & `Microsoft.Data.Sqlite` for secure and efficient data storage without an ORM.
+## 📦 Installation & Setup
 
-#### Logging & Documentation
-* 📊 **NLog** (`NLog.Web.AspNetCore`) for file-based logging.
-* 🟢 **Swashbuckle / Swagger** for API testing and documentation.
-
-## Installation & Usage
-
-* Clone the repository:
-```bash
-git clone [https://github.com/stoyantsiparov/ProCredit-SwiftParser.git](https://github.com/stoyantsiparov/ProCredit-SwiftParser.git)
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/stoyantsiparov/ProCredit-SwiftParser.git](https://github.com/stoyantsiparov/ProCredit-SwiftParser.git)
+2. **Navigate to the directory:**
+   ```bash
+   cd ProCredit-SwiftParser
+3. **Build and Run:**
+   ```bash
+   dotnet run
+4. **Build and Run:**
+   Once running, the Swagger UI will automatically open at:
+   ```bash
+   [dotnet run](https://localhost:[port]/swagger)
