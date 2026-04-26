@@ -38,7 +38,3 @@ This project is a high-performance **.NET 10 Web API** developed as a technical 
 3. **Build and Run:**
    ```bash
    dotnet run
-4. **Build and Run:**
-   Once running, the Swagger UI will automatically open at:
-   ```bash
-   [dotnet run](https://localhost:[port]/swagger)
